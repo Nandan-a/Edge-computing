@@ -1,0 +1,10 @@
+docker build -t mygccapp:diot .
+
+#RUN
+
+sudo docker run -it --rm --name gcc-app mygccapp:diot
+
+Note: when --rm flag is used with run command at run time; When container completes
+its execution it will automatically removed from the native machine.
+
+-------------------------------------------------------------------------------------------

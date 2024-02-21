@@ -1,0 +1,22 @@
+step 1:
+    signup to AWS account
+
+step2:
+    goto  user --> create user
+    creating new IAM user
+        username=admin-diot
+        setting password
+step3 :
+Attach policy
+    providing policy access 
+    - AmazonEC2FullAccess
+    - AmazonDynamoDBFullAccess
+    create user
+    Succesfully created
+
+same repeat for new user step2 & step3
+
+login to aws with IAM user
+-give root user account id
+-IAM user name
+-IAM password

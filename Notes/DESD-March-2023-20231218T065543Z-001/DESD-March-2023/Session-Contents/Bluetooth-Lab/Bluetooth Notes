@@ -1,0 +1,31 @@
+##BLUETOOTH##
+
+$ hciconfig ---> to get mac id
+
+
+1. $ bluetoothctl
+2. # power on
+3. # pairable on 
+4. # scan on (copy mac id)
+5. # scan off
+6. # pair<mac id>
+7. # trust<mac id>
+8. # quit
+
+##(If dont want to use bluetooth commands then directly connect the bluetooth through GUI and run the OBEX commands)##
+
+##OBEX PROTOCOL##
+
+9. $ sudo systemctl --global enable obex
+10. $ systemctl --global start obex
+11. $ systemctl --global status obex
+12. $ systemctl --global restart obex (if any error exist) 
+13. $ obexctl
+14. # connect <mac id> (second users device should not be connected)
+15. # send <file name> (file should be in home directory)
+
+
+
+---> systemctl and service are same commands to start any services (start, status, restart)
+---> systemctl start mosquitto //will be same as// ---> service mosquitto start
+

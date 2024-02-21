@@ -1,0 +1,45 @@
+step1 :
+    signin to aws console
+
+step2:lambda function
+-create new function
+    -function name
+configuration
+    -permision
+        full access to s3
+
+code:
+lambda_function
+-write code 
+Deploy
+
+step3 : apigateway
+
+    create api
+        -REST api --> build
+        -->NEW
+        -api name
+        -region
+        create
+    create resource
+    -resource name
+    -enable CORS
+    create method
+    -method type
+    -choose lambda function
+    create method
+
+    Deploy api
+        -stage --> new stage
+        stage name
+
+
+step4:s3
+
+create Baucket:
+ -baucket name // name should be unique across global
+create
+
+
+copy the post link to post man to post data
+

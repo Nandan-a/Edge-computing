@@ -1,0 +1,162 @@
+influxDB - Geeting Started
+-------------------------------------
+Main website Link:
+https://www.influxdata.com/
+
+Getting Started Guide:
+https://docs.influxdata.com/influxdb/v1.7/introduction/getting-started/
+
+Installation:
+https://docs.influxdata.com/influxdb/v1.7/introduction/installation/#
+
+Ubuntu Users:
+
+sudo apt-get update && sudo apt-get install influxdb
+
+sudo service influxdb start
+
+sudo apt-get install influxdb-client
+
+sudo service influxdb status
+--------------------------------------------------------------------------------
+influx
+
+sudo apt --only-upgrade install influxdb
+
+https://www.influxdata.com/time-series-database/
+
+---------------------------------------------------------
+#Display database;
+show databases;
+#Create a new database;
+create database sensor_data;
+CREATE DATABASE sensor_data1;
+CreaTE DATABSES sensor_data2; 
+
+#influxdb queries/statements are not case sensitive.
+
+#Use/Select database;
+
+use sensor_data;
+show measurements;     //Similar to table in SQL
+---------------------------------------------------------
+<measurement>[,<tag-key>=<tag-value>...] <field-key>=<field-value>[,<field2-key>=<field2-value>...] [unix-nano-timestamp]
+
+tag-key is optional while minimum field-key 1 is mandetory
+------------------------------------------------------------------
+#Create a mesurement;
+
+insert cpu,host=serverA,region=us_west value=0.64
+insert room-temperature,location=pune,room=diot value=27
+#note while using - always add "" in mesuerement name while performing operations
+select * from "room-temperature"
+--------------------------------------------------------------
+influx -precision rfc3339  #(YYYY-MM-DDTHH:MM:SS.nnnnnnnnnZ
+
+INSERT temperature,machine=unit42,type=assembly external=25,internal=37
+
+SELECT "machine", "internal" FROM "temperature"
+
+Here : Machine is tag name while internel is fieldkey which we are selecting from temperature measurement
+
+#Assignment
+
+Create a mesasurement server-stat with tagname/tag-values location=Maharashtra city=mumbai "filedkey/values" should be loadavg1=0.10
+loadavg2=0.15 loadavg3=0.20
+
+
+#Write a query to display location and loadavg1
+
+select "location" loadavg1" from "server-stat"
+
+
+Aggregate functions:
+select SUM(loadavg3) from "server-stat"
+select MEAN(loadavg3) from "server-stat"
+
+https://docs.influxdata.com/influxdb/v1.8/query_language/functions/#sum
+
+DROP database "sensor_data1"
+-----------------------------------------------------------------------------------------
+select * from "server-stat" TZ('Asia/Kolkata')  #set time zone
+
+insert server-stat,location=maharashtra,city=mumbai loadavg1=0.20,loadavg2=0.18,loadavg3=0.25
+
+
+
+
+
+
+
+> create database diot22-logger
+ERR: error parsing query: found -, expected ; at line 1, char 23
+> create database diot22-logger;
+ERR: error parsing query: found -, expected ; at line 1, char 23
+> create database "diot22-logger";
+> use "diot22-logger";
+Using database diot22-logger
+
+> insert dht11data,place=diotlab,region=pune temperature=27,humidity=85
+
+
+
+> insert dht11data,place=diotlab,region=pune temperature=27,humidity=85
+> show measurements;
+name: measurements
+name
+----
+dht11data
+> select * from dht11data
+name: dht11data
+time                humidity place   region temperature
+----                -------- -----   ------ -----------
+1660470220402581600 85       diotlab pune   27
+
+
+insert dht11data,place=diotlab,region=pune temperature=27,humidity=85
+
+
+> select * from dht11data
+name: dht11data
+time                humidity place   region temperature
+----                -------- -----   ------ -----------
+1660470220402581600 85       diotlab pune   27
+1660470352955404350 85       diotlab pune   28
+1660470359589754703 82       diotlab pune   29
+1660470363723290822 82       diotlab pune   30
+> select temperature from dht11data
+name: dht11data
+time                temperature
+----                -----------
+1660470220402581600 27
+1660470352955404350 28
+1660470359589754703 29
+1660470363723290822 30
+> select temperature from dht11data where temperature > 28
+name: dht11data
+time                temperature
+----                -----------
+1660470359589754703 29
+1660470363723290822 30
+
+
+> select temperature,humidity from dht11data where temperature > 28 and humidity < 83
+name: dht11data
+time                temperature humidity
+----                ----------- --------
+1660470359589754703 29          82
+1660470363723290822 30          82
+
+
+
+
+
+
+
+
+
+
+
+
+
+

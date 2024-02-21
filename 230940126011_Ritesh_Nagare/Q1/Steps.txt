@@ -1,0 +1,17 @@
+Folling are the steps to create a IAM user for diot-admin:
+
+1. Head towards the search bar and search for 'IAM'.(There will appear a red icon for IAM).
+2. After clecking on the icon a new window which will specify the number of users below the IAM resources .
+3. Click on the users .
+4. On the slight right click on 'Create user'.
+5. Provide it with a required username.
+6. Followed by this click on the below check-box.which will specify the further settings for creating a IAM user.
+7. Click on 'I want to create an IAM user'.
+8. Then check  Custom password option and provide it with a required password (in this case i have provided it with a Diotadmin12 for admin and Diotuser12 for second user).
+9. Then click on next and provide a required permissions . 
+10. A new review page will open to review the given settings .
+11. Click on create . 
+12. Head towards a new window and on the login page of aws click on IAM user login .
+13. Fill the account id of the root user and fill the user name and password as well .
+14. after clicking on login you will be headed towards your IAM account .
+15. You are all set up.. to do your Tasks here . 

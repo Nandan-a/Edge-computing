@@ -1,0 +1,50 @@
+Official Link:
+https://docs.docker.com/docker-hub/
+
+Docker Hub is a service provided by Docker for finding and sharing container images with your team. It provides the following major features:
+
+    Repositories: Push and pull container images.
+    Teams & Organizations: Manage access to private repositories of container images.
+    Official Images: Pull and use high-quality container images provided by Docker.
+    Publisher Images: Pull and use high- quality container images provided by external vendors.
+    Builds: Automatically build container images from GitHub and Bitbucket and push them to Docker Hub.
+    Webhooks: Trigger actions after a successful push to a repository to integrate Docker Hub with other services.
+
+Steps to be followed:
+
+#First step is to login into docker from local host machine
+
+docker login
+It will prompt you to enter username and password
+Enter your credenatils
+and then login succeeded mesg will appear
+-----------------------------
+Tag your image on the localhost machine
+docker tag 
+
+Note : We have to tag our image gccapp:diot that we have recently created
+
+#check the recent image
+sudo docker image | head -2
+
+sudo docker tag mygccapp:diot bhupendrajmd/testiot:helloworldinc
+
+#Ensure use lowercase letter names while writing image tag name
+
+#check the latest tagged image
+
+sudo docker image | head -4
+
+#once image is tagged : Push it to docker hub
+
+sudo docker push 
+
+sudo docker push bhupendrajmd/testiot:helloworldinc
+
+#RUN it from anywhere
+
+sudo docker run -it  bhupendrajmd/testiot:helloworldinc
+
+#Can be pull from anywhere
+
+docker pull bhupendrajmd/testiot:helloworldinc

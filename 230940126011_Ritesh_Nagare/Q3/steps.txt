@@ -1,0 +1,47 @@
+# Folling are the steps to create an API gateway :
+    -As we created a IAM user further we will create a API gateway in the same IAM user account (diot-admin).
+
+1.search for the API Gateway in the search box .
+2.click on the Rest API.
+3.click on create resource and provide a desired Resource name .
+4.check on CORS (Cross Origin Resource Sharing) 
+    -This will Create an OPTIONS method that allows all origins, all methods, and several common headers.
+5.click Create Resource.
+6.on the left side click on created resource .
+7.click on Create method.
+8. Select Method type as Post .
+9.After creating a Resource, Click on the Deploy API .
+10.Select Stage as New Stage.
+11. On clicking the (+) on the stages menu click on the post and copy the URL
+12. Paste this URL on PostMan used for data Telemetry .
+
+# Creating a S3 Bucket :
+
+1.search for S3 in the search box .
+2.Click on Create Bucket .
+3.Provide a Bucket Name.
+4.Click on Create Bucket.
+5.Created Bucket will appear at General purpose buckets.
+
+
+# Creating a Lambda Function:
+
+1.search for the Lambda in the search box .
+2.click on Create function.
+3.provide a Function name .
+4. Select language.
+5. Click Create Function . 
+6.Click on add permissions.
+7.click Attach Policies.
+8.search for require permissions.
+    - AmazonS3FullAccess
+9. Click add permissions.
+
+# Data Telemetry on PostMan :
+
+1. Paste the copied URL
+2.Select Post.
+3.Click on send.
+4.if the status code is 200
+    - Then congratulations you have made it .
+5.the posted telemetry will appera at the S3 Bucket.

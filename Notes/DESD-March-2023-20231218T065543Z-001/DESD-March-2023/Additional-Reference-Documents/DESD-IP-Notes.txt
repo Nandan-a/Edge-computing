@@ -1,0 +1,190 @@
+Class FULL IPv4 Addressing
+-----------------------------
+Total Classes : 5 (A to E)
+Classes used for IP assignment to Host (Class A to C).
+-------------------------------------------------------
+No of Host Machines :
+Class A: 2^24 - 2
+------------------------
+CLASS B: 2^16 -2
+-------------------------
+CLASS C: 2^8 - 2 = 254
+-----------------------
+Remember:
+The First address is reserved for Network Address and last Address is reserved for
+Broadcast Address.
+
+E.g in Class C:
+192.168.0.0 to 192.168.0.255
+Valid range for Host:
+192.168.0.1 to 192.168.0.254
+--------------------------------------
+IPV 4 Types:
+1. Private IP Address : used for Intra Network (No Need to Pay any amount for this)
+2. Public IP Address : use for Internet ( Need to Pay money to use it (Need to buy from ISP or Cloud hosting vendors e.g. AWS)
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+0XXXXXXX
+00000001
+1.0.0.0 - Min()
+0111111 - 127 (Max)
+1 to 127
+-----------------------------
+Class A : Network Address (8 Bytes)
+Host Address : 24 bytes
+
+0NNNNNNN.HHHHHHHH.HHHHHHHH.HHHHHHHH
+Range: 1 to 127
+-----------------------
+Host Address Possible (2^24-2) Max Host Address in Class A Network - 16777214 (Max Host Address in Class A)
+1.0.0.1 to 127.255.255.254
+-------------------------------------------------------
+Why 1.0.0.0 and 127.255.255.255 can't be used as Host Address
+First IP adress is treated as Network Address - 
+Class A: NW Address: 1.0.0.0
+Broadcast Address : 127.255.255.255
+127 is not used to assign host addresses because it is fixed for internal debugging purpose
+1.0.0.1 to 126.255.255.254
+------------------------------
+127.0.0.1 to 127.255.255.254 can be used for internal debugging
+127.0.0.1 - loop Back Address - used for internal debugging purpose on Host Machines
+Subnet Mask : Used to find Network Address from an Given IP Address (Host Address)
+Class A by Default Subnet Mask : 255.0.0.0
+
+126.17.0.10 - What is the Network Address of the IP?
+
+Approach:
+126.17.0.10 - in Binary format (Ensure (octet should be formed)
+0111110.00010001.00000000.00001010 
+Default Subnet Mask (255.0.0.0) - Class A
+11111111.00000000.00000000.00000000 (Perform AND Operation)
+-----------------------------------------------------------------
+01111110.00010001.00000000.00001010 
+11111111.00000000.00000000.00000000 (AND)
+-----------------------------------------
+01111110.00000000.00000000.00000000   - Network Address
+126.0.0.0
+------------------------------------------------------------
+120.28.15.128 - IP Address (Find Out the Network Address)
+
+What is your correct Approach?
+1. Identify the IP address belong to which class?
+2. Look for Default subnet mask of that class
+3. Write down the Given IP address in the Binary format
+4. Write down the default Subnet mask in the binary format
+5. Perform AND operation between IP address and Subnet Mask
+6. Convert the resultant Binary format into Decimal Format
+--------------------------------------------------------------------
+
+Class B:
+10NNNNNN.NNNNNNNN.HHHHHHHH.HHHHHHHH
+Range:
+10000000.00000000.00000000.00000000
+128.0.0.0 (Start of Class B)
+
+10111111.11111111.11111111.11111111
+191.255.255.255 (End of Class B)
+
+Default Subnet Mask: 255.255.0.0
+
+Valid IP address (Host)
+128.0.0.1 to 191.255.255.254
+
+Network Address : 128.0.0.0
+Broadcast Address: 191.255.255.255
+
+Find out the Network Address of beloW IP
+------------------------------------------
+172.17.128.32
+
+Answer?
+172.17.0.0
+Max Host Address in Class B = 2^16 -2 = 65534
+-----------------------------------------------
+Class C:
+
+110NNNNN.NNNNNNNN.NNNNNNNN.HHHHHHHH
+Range:
+11000000.00000000.00000000.00000000
+192.0.0.0
+11011111.11111111.11111111.11111111
+223.255.255.255
+Valid IP Address:
+192.0.0.1 to 223.255.255.254
+NW Address: 192.0.0.0
+BroadCast Address: 223.255.255.255
+
+-------------------------------------------------
+Class D:
+1110XXX.
+Range:
+1110000.00000000.00000000.00000000
+224.0.0.0
+to 
+11101111.11111111.11111111.11111111
+239.255.255.255
+Valid IP for Multicasting:
+224.0.0.1 to 239.255.255.254
+
+CLASS E: (R&D Purpose)
+11110XXX
+240.0.0.0 to 255.255.255.255
+
+Class D and Class E is not used for assigning IP address for the host Machine
+-------------------------------------------
+
+
+What are Valid IPS of Private Network for a Host Machine
+
+1.  172.16.0.0      - Not valid (Network Address)
+
+2.  172.18.0.10     - Valid
+
+3.  192.168.0.11 -  Valid
+
+4.  192.169.0.10 - Not valid (Public Network IP)
+
+5.  192.168.128.254 - Valid
+
+7.  10.0.31.15 - Valid
+
+8.  10.255.255.128 - Valid
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------
+
+
+
+00000000
+
+0.0.0.0
+
+Inbound Traffic - Server(outside) - Client(inside)
+0.0.0.0 - AWS cloud
+EC2 instance - 2.10.1.15:1880 (Node-Red)
+-----------------
+0.0.0.0 (any ip outside of the network can access
+the Node-Red running at Ec2 instance)
+--------------
+Outbound Traffic - Client - Server

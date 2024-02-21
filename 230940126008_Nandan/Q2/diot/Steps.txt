@@ -1,0 +1,20 @@
+1.Login to docker and put your credentials. 
+   Screenshot file:Step_1.png
+ 
+2.Pull the docker image called - tomcat:8.0-alpine
+    Screenshot file:Step_2.png
+
+3.Build Docker image
+    Screenshot file: Step_3.png
+
+4.Run the Docker image and map 5025 port         
+    Screenshot file: Step_4.png
+
+5.Open localhost:8080 
+    Screenshot file: Step_5.png
+
+6.Open localhost:5025
+    Screenshot file: Step_6.png
+
+
+    
